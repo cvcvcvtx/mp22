@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'crm_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+#TODO потом надо будет с этим разобраться и накатить postgresql 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
