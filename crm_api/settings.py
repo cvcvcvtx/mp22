@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'dashboard',
     'deals',
     'tasks',
+    'timeline',
 ]
 
 MIDDLEWARE = [
