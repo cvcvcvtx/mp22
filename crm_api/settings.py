@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'deals',
     'tasks',
     'timeline',
+    'authentication',
 ]
 
 MIDDLEWARE = [

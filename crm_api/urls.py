@@ -25,4 +25,5 @@ urlpatterns = [
     path('deals/', include('deals.urls')),
     path('tasks/', include('tasks.urls')),
     path('timeline/', include('timeline.urls')),
+    path('', include('authentication.urls')),
 ]
