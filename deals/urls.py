@@ -1,8 +1,11 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import StageViewSet, DealViewSet
 
-app_name = 'deals'
+router = DefaultRouter()
+router.register(r'', StageViewSet)
+router.register(r'', DealViewSet)
 
 urlpatterns = [
-    
+    path('', include(router.urls)),
 ]
