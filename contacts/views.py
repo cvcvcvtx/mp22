@@ -3,7 +3,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Contact
 from .serializers import ContactSerializer
 
-class ContactViewSet(viewsets.ModelViewSet):
+from timeline.mixins import ActionLogMixin
+
+class ContactViewSet(ActionLogMixin, viewsets.ModelViewSet):
     """
     ViewSet для работы с контактами.
     Автоматически создает CRUD: список, просмотр, создание, изменение, удаление.
@@ -37,5 +39,7 @@ class ContactViewSet(viewsets.ModelViewSet):
             serializer.save(assigned_to=self.request.user)
         else:
             serializer.save()
+
+        self._log_action('CREATED', serializer.instance)
 
 
