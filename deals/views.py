@@ -3,14 +3,20 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Stage, Deal
 from .serializers import StageSerializer, DealSerializer
 
-class StageViewSet(viewsets.ModelViewSet):
+from timeline.mixins import ActionLogMixin
+
+class StageViewSet(ActionLogMixin, viewsets.ModelViewSet):
 
     queryset = Stage.objects.all().order_by('order') 
     serializer_class = StageSerializer
     permission_classes = [permissions.IsAuthenticated] 
 
 
-class DealViewSet(viewsets.ModelViewSet):
+class DealViewSet(ActionLogMixin, viewsets.ModelViewSet):
+    """
+    Работа со сделками.
+    CRUD операции.
+    """
 
     queryset = Deal.objects.all().select_related('contact', 'stage', 'assigned_to') 
     serializer_class = DealSerializer
@@ -24,6 +30,8 @@ class DealViewSet(viewsets.ModelViewSet):
     
     ordering_fields = ['value', 'created_at', 'updated_at']
     ordering = ['-created_at'] 
+
     def perform_create(self, serializer):
 
         serializer.save()
+        self._log_action('CREATED', serializer.instance)

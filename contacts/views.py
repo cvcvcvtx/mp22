@@ -7,8 +7,8 @@ from timeline.mixins import ActionLogMixin
 
 class ContactViewSet(ActionLogMixin, viewsets.ModelViewSet):
     """
-    ViewSet для работы с контактами.
-    Автоматически создает CRUD: список, просмотр, создание, изменение, удаление.
+    Работа с контактами.
+    CRUD операции.
     """
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer

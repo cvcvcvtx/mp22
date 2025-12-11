@@ -6,8 +6,8 @@ from contacts.models import Contact
 class Stage(models.Model):
     """Модель для кастомных этапов сделки"""
     name = models.CharField("Название этапа", max_length=100, unique=True)
-    order = models.PositiveIntegerField("Порядок", default=0, help_text="Для сортировки на канбан-доске")
-    color = models.CharField("Цвет в HEX", max_length=7, default="#FFFFFF", help_text="Например, #FF0000")
+    order = models.PositiveIntegerField("Порядок", default=0, help_text="Для сортировки на канбан-доске или чего то подобного")
+    color = models.CharField("Цвет в HEX", max_length=7, default="#FFFFFF")
 
     class Meta:
         ordering = ['order']

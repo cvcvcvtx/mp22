@@ -4,13 +4,16 @@ from .models import Activity, ActionLog
 from .serializers import ActivitySerializer, ActionLogSerializer
 
 class ActivityViewSet(viewsets.ModelViewSet):
-    """CRUD для активностей"""
+    """
+    Работа с активностями.
+    CRUD операции.
+    """
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
     permission_classes = [permissions.IsAuthenticated]
     
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_fields = ['contact', 'deal', 'type'] # Фильтр: получить все звонки по Контакту №5
+    filterset_fields = ['contact', 'deal', 'type']
     ordering = ['-created_at']
 
     def perform_create(self, serializer):

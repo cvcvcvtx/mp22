@@ -3,7 +3,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Task
 from .serializers import TaskSerializer
 
-class TaskViewSet(viewsets.ModelViewSet):
+from timeline.mixins import ActionLogMixin
+
+class TaskViewSet(ActionLogMixin, viewsets.ModelViewSet):
+    """
+    Работа с задачами.
+    CRUD операции.
+    """
 
     queryset = Task.objects.all().select_related('assigned_to', 'deal', 'contact')
     serializer_class = TaskSerializer
