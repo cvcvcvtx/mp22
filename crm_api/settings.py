@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'tasks',
     'timeline',
     'authentication',
+    'users',
 ]
 
 REST_FRAMEWORK = {

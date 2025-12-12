@@ -37,4 +37,5 @@ urlpatterns = [
     path('tasks/', include('tasks.urls')),
     path('timeline/', include('timeline.urls')),
     path('', include('authentication.urls')),
+    path('users/', include('users.urls')),
 ]

@@ -1,7 +1,5 @@
-from django.contrib.auth.models import User
-from rest_framework import generics
-from rest_framework.permissions import AllowAny, IsAdminUser
-from .serializers import RegisterSerializer, CustomTokenObtainPairSerializer
+from rest_framework.permissions import AllowAny
+from .serializers import  CustomTokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
@@ -19,11 +17,3 @@ class CustomTokenRefreshView(TokenRefreshView):
     """
     permission_classes = (AllowAny,)
 
-class RegisterView(generics.CreateAPIView):
-    """
-    Эндпоинт для регистрации новых пользователей.
-    """
-    queryset = User.objects.all()
-    #permission_classes = (AllowAny,) 
-    permission_classes = (IsAdminUser,)
-    serializer_class = RegisterSerializer
