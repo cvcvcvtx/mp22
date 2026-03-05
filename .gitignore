@@ -5,3 +5,4 @@ env/
 venv/
 myenv/
 .DS_Store
+.env
